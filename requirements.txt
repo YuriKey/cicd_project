@@ -1,0 +1,10 @@
+allure-pytest==2.14.2
+allure-python-commons==2.14.2
+colorama==0.4.6
+Faker==37.3.0
+pluggy==1.6.0
+pytest==8.4.0
+selenium==4.33.0
+setuptools==80.9.0
+webdriver-manager==4.0.2
+wheel==0.45.1
