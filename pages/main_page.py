@@ -11,7 +11,7 @@ class MainPage(BasePage):
         super().__init__(browser)
 
     EXPECTED_TEXTS = {
-        'url_title': 'Get Online Selenium Certification Course | Way2Automation',
+        'url_title': 'Get Online Selenium Certification Course | Way2Automationn',
         'reg_button_text': 'Register Now',
         'block_courses_title': 'Best Selenium Certification Course Online',
         'life_time_text': 'Lifetime Membership',
