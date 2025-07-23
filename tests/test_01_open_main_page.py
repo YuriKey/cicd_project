@@ -6,8 +6,8 @@ urls = Urls()
 
 
 @allure.epic('Главная страница')
-@allure.feature('Элементы главной страницы')
-@allure.story('Проверка открытия главной страницы')
+@allure.feature('Элементы страницы')
+@allure.story('Проверка открытия страницы')
 @allure.severity(allure.severity_level.BLOCKER)
 def test_main_page_open(pages):
     main_page = pages.main
