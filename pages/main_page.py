@@ -31,7 +31,7 @@ class MainPage(BasePage):
         'mail': 'trainer@way2automation.com',
         'mail2': 'seleniumcoaching@gmail.com',
         'address': 'Way2Automation\nCDR Complex, 3rd Floor, Naya Bans Market, Sector 15, Noida, Near sec-16 Metro '
-                   'Stationn'
+                   'Station'
     }
 
     @staticmethod
