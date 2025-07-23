@@ -27,7 +27,7 @@ class MainPage(BasePage):
         'in_phone3': '+91 97111-11-558',
         'in_phone4': '+91 97111-91-558',
         'us_phone': '+1 646-480-0603',
-        'skype_text': 'seleniumcoaching',
+        'skype_text': 'seleniumcoachingg',
         'mail': 'trainer@way2automation.com',
         'mail2': 'seleniumcoaching@gmail.com',
         'address': 'Way2Automation\nCDR Complex, 3rd Floor, Naya Bans Market, Sector 15, Noida, Near sec-16 Metro '
