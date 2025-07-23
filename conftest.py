@@ -3,6 +3,7 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
+from data.urls import Urls
 from pages.page_factory import PageFactory
 
 
@@ -23,3 +24,10 @@ def browser():
     yield driver
     with allure.step('Закрытие браузера'):
         driver.quit()
+
+
+@pytest.fixture(scope='function')
+def open_main_page(pages):
+    with allure.step('Открытие главной страницы'):
+        pages.main.open(Urls.MAIN_PAGE)
+        return pages.main
