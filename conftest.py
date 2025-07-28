@@ -1,3 +1,5 @@
+import os
+
 import allure
 import pytest
 from selenium import webdriver
@@ -16,12 +18,18 @@ def pages(browser):
 @pytest.fixture(scope='function')
 def browser():
     with allure.step('Запуск браузера'):
-        chrome_options = Options()
-        chrome_options.add_argument("--headless=new")
-        chrome_options.add_argument("--no-sandbox")
+        options = Options()
+        options.set_capability("browserName", "chrome")
+        options.set_capability("browserVersion", "latest")
+        options.set_capability("selenoid:options", {
+            "enableVNC": True,
+            "enableVideo": False
+        })
+        options.add_argument("--headless=new")
+        options.add_argument("--no-sandbox")
         driver = webdriver.Remote(
-            command_executor=selenium_host,  # need define
-            options=chrome_options
+            command_executor=os.getenv("SELENOID_URL", "http://selenoid:4444/wd/hub"),
+            options=options
         )
         driver.implicitly_wait(10)
 
