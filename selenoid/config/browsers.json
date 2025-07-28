@@ -5,9 +5,7 @@
       "118.0": {
         "image": "selenoid/vnc:chrome_118.0",
         "port": "4444",
-        "path": "/wd/hub",
-        "env": ["SE_NODE_MAX_SESSIONS=5"],
-        "volumes": ["/dev/shm:/dev/shm"]
+        "path": "/"
       }
     }
   }

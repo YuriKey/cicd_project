@@ -1,9 +1,5 @@
 import os
 
-import logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
 import allure
 import pytest
 from selenium import webdriver
@@ -24,19 +20,13 @@ def pages(browser):
 
 @pytest.fixture(scope='function')
 def browser():
-    logger.info(f"Connecting to Selenoid at: {selenium_host}")
     with allure.step('Запуск браузера'):
         chrome_options = Options()
         chrome_options.add_argument('--start-maximized')
-        try:
-            driver = webdriver.Remote(
-                command_executor=selenium_host,
-                options=chrome_options
-            )
-            logger.info("Browser session created successfully")
-        except Exception as e:
-            logger.error(f"Failed to create browser session: {str(e)}")
-            raise
+        driver = webdriver.Remote(
+            command_executor=selenium_host,
+            options=chrome_options
+        )
         driver.implicitly_wait(10)
 
     yield driver
