@@ -1,46 +1,34 @@
 services:
-  # Контейнер для запуска тестов
   test-runner:
     build:
       context: .
       dockerfile: Dockerfile.test
     volumes:
-      # Монтируем директорию reports, чтобы сохранить отчёты на хосте
       - ./reports:/app/reports
-    # Зависимость от selenoid
     depends_on:
       - selenoid
-    # Сеть, чтобы контейнеры могли общаться
     networks:
       - selenoid-net
-    # Команда для запуска тестов
     command: >
       sh -c "
       python -m pytest --alluredir=reports/allure-results --junitxml=reports/junit/results.xml &&
       allure generate reports/allure-results -o reports/allure-report --clean
       "
 
-  # Контейнер Selenoid
   selenoid:
     image: aerokube/selenoid:latest
     ports:
-      # Порт 4444 открыт на хосте (для отладки, не обязательно)
       - "4444:4444"
     volumes:
-      # Конфигурация браузеров
       - ./selenoid/config:/etc/selenoid:ro
-      # Доступ к Docker Daemon хоста (чтобы Selenoid мог запускать браузер-контейнеры)
       - /var/run/docker.sock:/var/run/docker.sock
-    # Команда запуска Selenoid
     command: >
       -conf /etc/selenoid/browsers.json
       -video-output-dir /opt/selenoid/video
       -log-output-dir /opt/selenoid/logs
-    # Сеть
     networks:
       - selenoid-net
 
-# Создаём общую сеть
 networks:
   selenoid-net:
     driver: bridge
