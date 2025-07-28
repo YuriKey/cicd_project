@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   test-runner:
     build:
@@ -9,23 +11,23 @@ services:
       - selenoid
     networks:
       - selenoid-net
-    command: >
-      sh -c "
-      python -m pytest --alluredir=reports/allure-results --junitxml=reports/junit/results.xml &&
-      allure generate reports/allure-results -o reports/allure-report --clean
-      "
 
   selenoid:
     image: aerokube/selenoid:latest
-    ports:
-      - "4444:4444"
-    volumes:
-      - ./selenoid/config:/etc/selenoid:ro
-      - /var/run/docker.sock:/var/run/docker.sock
     command: >
       -conf /etc/selenoid/browsers.json
       -video-output-dir /opt/selenoid/video
       -log-output-dir /opt/selenoid/logs
+      -docker-host tcp://dind:2375
+    volumes:
+      - ./selenoid/config:/etc/selenoid:ro
+    networks:
+      - selenoid-net
+
+  dind:
+    image: docker:dind
+    privileged: true
+    command: --storage-driver=overlay2
     networks:
       - selenoid-net
 
