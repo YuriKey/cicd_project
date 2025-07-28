@@ -9,7 +9,7 @@ from data.urls import Urls
 from pages.page_factory import PageFactory
 
 
-selenium_host = os.getenv("SELENIUM_HOST", "http://selenoid:4445/wd/hub")
+selenium_host = os.getenv("SELENIUM_HOST", "http://selenoid:4444/wd/hub")
 
 
 @pytest.fixture

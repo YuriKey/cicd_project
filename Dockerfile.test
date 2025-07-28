@@ -13,7 +13,7 @@ WORKDIR /app
 
 COPY . .
 
-ENV SELENIUM_HOST=http://selenoid:4445/wd/hub
+ENV SELENIUM_HOST=http://selenoid:4444/wd/hub
 ENV ALLURE_RESULTS_DIR=/app/reports/allure-results
 
 CMD ["python", "-m", "pytest"]
