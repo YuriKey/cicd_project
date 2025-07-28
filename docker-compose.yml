@@ -1,5 +1,6 @@
 services:
   test-runner:
+    container_name: test-runner
     build:
       context: .
       dockerfile: Dockerfile.test-runner
