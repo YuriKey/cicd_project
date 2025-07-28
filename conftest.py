@@ -1,5 +1,3 @@
-import os
-
 import allure
 import pytest
 from selenium import webdriver
@@ -7,11 +5,6 @@ from selenium.webdriver.chrome.options import Options
 
 from data.urls import Urls
 from pages.page_factory import PageFactory
-import logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
-selenium_host = os.getenv("SELENIUM_HOST", "http://selenoid:4444/wd/hub")
 
 
 @pytest.fixture
@@ -22,16 +15,12 @@ def pages(browser):
 
 @pytest.fixture(scope='function')
 def browser():
-    logger.info(f"Connecting to Selenium hub at: {selenium_host}")
     with allure.step('Запуск браузера'):
         chrome_options = Options()
         chrome_options.add_argument("--headless=new")
         chrome_options.add_argument("--no-sandbox")
-        chrome_options.add_argument("--disable-dev-shm-usage")
-        chrome_options.add_argument("--disable-gpu")
-        chrome_options.add_argument("--remote-allow-origins=*")
         driver = webdriver.Remote(
-            command_executor=selenium_host,
+            command_executor=selenium_host,  # need define
             options=chrome_options
         )
         driver.implicitly_wait(10)
