@@ -21,7 +21,8 @@ services:
       - "4444:4444"
     volumes:
       - ./selenoid/config:/etc/selenoid:ro
-      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - DOCKER_API_VERSION=1.43
     command: >
       -conf /etc/selenoid/browsers.json
       -video-output-dir /opt/selenoid/video
