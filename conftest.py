@@ -7,7 +7,9 @@ from selenium.webdriver.chrome.options import Options
 
 from data.urls import Urls
 from pages.page_factory import PageFactory
-
+import logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 selenium_host = os.getenv("SELENIUM_HOST", "http://selenoid:4444/wd/hub")
 
@@ -20,6 +22,7 @@ def pages(browser):
 
 @pytest.fixture(scope='function')
 def browser():
+    logger.info(f"Connecting to Selenium hub at: {selenium_host}")
     with allure.step('Запуск браузера'):
         chrome_options = Options()
         chrome_options.add_argument("--headless=new")
