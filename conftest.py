@@ -20,7 +20,7 @@ def browser():
     with allure.step('Запуск браузера'):
         options = Options()
         options.set_capability("browserName", "chrome")
-        options.set_capability("browserVersion", "latest")
+        options.set_capability("browserVersion", "114.0")
         options.set_capability("selenoid:options", {
             "enableVNC": True,
             "enableVideo": False
