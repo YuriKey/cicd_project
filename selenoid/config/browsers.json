@@ -3,7 +3,7 @@
     "default": "118.0",
     "versions": {
       "118.0": {
-        "image": "selenoid/chrome:118.0",
+        "image": "selenoid/vnc:chrome_118.0",
         "port": "4444",
         "path": "/"
       }
