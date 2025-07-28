@@ -16,7 +16,7 @@ def test_header_contacts_check(open_main_page):
         in_phone2 = main_page.find_element(loc.PHONE2_INDIAN)
         us_phone = main_page.find_element(loc.PHONE_US)
         assert in_phone1 and main_page.get_text(in_phone1) == exp_text['in_phone1'], \
-            f'Неверный текст номера телефона {exp_text['in_phone1']}'
+            f'Неверный текст номера телефона {exp_text["in_phone1"]}'
         assert in_phone2 and main_page.get_text(in_phone2) == exp_text['in_phone2'], \
             f'Неверный текст номера телефона {exp_text['in_phone2']}'
         assert us_phone and main_page.get_text(us_phone) == exp_text['us_phone'], \

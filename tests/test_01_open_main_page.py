@@ -22,8 +22,7 @@ def test_main_page_open(pages):
         navigation_elements = loc.NAVIGATION_ELEMENTS
         missing_elements = main_page.check_elements_with_text(navigation_elements, main_page)
 
-        assert not missing_elements, (f'Отсутствуют следующие элементы навигации:'
-                                      f' {', '.join(missing_elements)}')
+        assert not missing_elements, (f'Отсутствуют следующие элементы навигации: {", ".join(missing_elements)}')
 
     with allure.step('3. Проверка наличия и текста кнопки регистрации'):
         reg_button = main_page.find_element(loc.REGISTER_BUTTON)
