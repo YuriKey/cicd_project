@@ -10,7 +10,8 @@ from pages.page_factory import PageFactory
 
 
 # Получаем URL Selenoid из переменной окружения
-selenium_host = os.getenv("SELENIUM_HOST", "http://selenoid:4444/wd/hub")
+# selenium_host = os.getenv("SELENIUM_HOST", "http://selenoid:4444/wd/hub")
+selenium_host = os.getenv("SELENIUM_HOST","http://selenoid:4444/wd/hub")
 
 
 @pytest.fixture
@@ -24,7 +25,6 @@ def browser():
     with allure.step('Запуск браузера'):
         chrome_options = Options()
         chrome_options.add_argument('--start-maximized')
-        # driver = webdriver.Chrome(options=chrome_options)
         driver = webdriver.Remote(
             command_executor=selenium_host,
             options=chrome_options
