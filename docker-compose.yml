@@ -12,9 +12,10 @@ services:
       - SELENIUM_HOST=selenoid
       - SELENIUM_PORT=4444
     networks:
-      - selenoid-net
+      - selenoid_net
 
   selenoid:
+    container_name: selenoid
     image: aerokube/selenoid:latest-release
     ports:
       - "4444:4444"
@@ -23,11 +24,11 @@ services:
       - ./browsers:/etc/selenoid/browsers
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      - OVERRIDE_VIDEO_OUTPUT_DIR=/video
       - ENABLE_VNC=true
     networks:
-      - selenoid-net
+      - selenoid_net
 
 networks:
   selenoid-net:
+    name: selenoid_network
     driver: bridge
