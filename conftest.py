@@ -21,8 +21,13 @@ def browser():
         options = Options()
         options.add_argument("--headless=new")
         options.add_argument("--no-sandbox")
+
+        host = os.getenv("SELENIUM_HOST", "selenoid")
+        port = os.getenv("SELENIUM_PORT", "4444")
+        command_executor = f"http://{host}:{port}/wd/hub"
+
         driver = webdriver.Remote(
-            command_executor=os.getenv("SELENOID_URL", "http://selenoid:4444/wd/hub"),
+            command_executor=command_executor,
             options=options
         )
         driver.implicitly_wait(10)
