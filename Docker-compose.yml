@@ -6,14 +6,13 @@ services:
     ports:
       - "4444:4444"
     volumes:
-      - "./selenoid/config/:/etc/selenoid/"
+      - "./selenoid/config:/etc/selenoid"
       - "/var/run/docker.sock:/var/run/docker.sock"
-    command: ["-limit", "10", "-conf", "/etc/selenoid/browsers.json"]
 
   tests:
-    build: .
-    depends_on:
-      - selenoid
+    build:
+      context: .
+      dockerfile: Dockerfile.tests  # Явно указываем имя файла
     volumes:
       - "./reports:/app/reports"
     environment:
