@@ -8,7 +8,7 @@ services:
       - "4444:4444"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
-      - "./config:/etc/selenoid"
+      - ".selenoid/config:/etc/selenoid"
       - "./logs:/opt/selenoid/logs"
       - "./video:/opt/selenoid/video"
     environment:
