@@ -7,11 +7,11 @@ services:
       dockerfile: Dockerfile.test
     volumes:
       - ./reports:/app/reports
-      - ./selenoid/logs:/opt/selenoid/logs
     environment:
       - SELENIUM_HOST=http://selenoid:4444/wd/hub
     depends_on:
-      - selenoid
+      selenoid:
+        condition: service_healthy
     networks:
       - selenoid-net
     command: >
@@ -21,24 +21,29 @@ services:
       "
 
   selenoid:
-    image: aerokube/selenoid:latest
+    image: aerokube/selenoid:1.10.7
     ports:
       - "4444:4444"
     volumes:
       - ./selenoid/config:/etc/selenoid:ro
-      - ./selenoid/logs:/opt/selenoid/logs
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./selenoid/video:/opt/selenoid/video
+      - ./selenoid/logs:/opt/selenoid/logs
     environment:
       - DOCKER_API_VERSION=1.43
       - OVERRIDE_VIDEO_OUTPUT_DIR=/opt/selenoid/video
       - OVERRIDE_LOG_OUTPUT_DIR=/opt/selenoid/logs
       - TZ=Europe/Moscow
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "http://localhost:4444/status"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
     command: >
-      ["-conf", "/etc/selenoid/browsers.json",
-       "-video-output-dir", "/opt/selenoid/video",
-       "-log-output-dir", "/opt/selenoid/logs",
-       "-container-network", "autotests-krenev_selenoid-net"]  # Явно указываем сеть
+      ["-limit", "10",
+       "-timeout", "1m",
+       "-service-startup-timeout", "2m",
+       "-conf", "/etc/selenoid/browsers.json",
+       "-container-network", "autotests-krenev_selenoid-net"]
     networks:
       - selenoid-net
 
