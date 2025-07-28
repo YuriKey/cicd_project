@@ -2,12 +2,12 @@ version: '3.8'
 
 services:
   selenoid:
-    image: aerokube/selenoid:latest-release
+    image: aerokube/selenoid
     ports:
       - "4444:4444"
     volumes:
-      - "./selenoid/config:/etc/selenoid"
       - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./config/:/etc/selenoid/"
 
   tests:
     build:
