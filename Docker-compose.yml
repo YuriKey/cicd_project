@@ -2,18 +2,43 @@ version: '3.8'
 
 services:
   selenoid:
-    image: aerokube/selenoid
+    image: aerokube/selenoid:latest
+    container_name: selenoid
     ports:
       - "4444:4444"
     volumes:
-      - "./selenoid/config:/etc/selenoid"
       - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./config:/etc/selenoid"
+      - "./logs:/opt/selenoid/logs"
+      - "./video:/opt/selenoid/video"
+    environment:
+      - OVERRIDE_VIDEO_OUTPUT_DIR=/opt/selenoid/video
+    networks:
+      - selenoid-net
+    command: ["-limit", "5", "-timeout", "1m", "-conf", "/etc/selenoid/browsers.json"]
 
   tests:
-    build:
-      context: .
-      dockerfile: Dockerfile.tests  # Явно указываем имя файла
+    build: .
+    container_name: autotests
+    depends_on:
+      selenoid:
+        condition: service_healthy
     volumes:
       - "./reports:/app/reports"
     environment:
       - SELENOID_URL=http://selenoid:4444/wd/hub
+    networks:
+      - selenoid-net
+    shm_size: '2gb'
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+
+networks:
+  selenoid-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
