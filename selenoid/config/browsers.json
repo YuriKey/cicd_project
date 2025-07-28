@@ -1,11 +1,10 @@
 {
   "chrome": {
-    "default": "latest",
+    "default": "120.0",
     "versions": {
-      "latest": {
-        "image": "selenoid/chrome:latest",
-        "port": "4444",
-        "path": "/"
+      "120.0": {
+        "image": "selenoid/vnc:chrome_120.0",
+        "port": "4444"
       }
     }
   }
