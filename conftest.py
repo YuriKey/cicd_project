@@ -19,12 +19,6 @@ def pages(browser):
 def browser():
     with allure.step('Запуск браузера'):
         options = Options()
-        options.set_capability("browserName", "chrome")
-        options.set_capability("browserVersion", "114.0")
-        options.set_capability("selenoid:options", {
-            "enableVNC": True,
-            "enableVideo": False
-        })
         options.add_argument("--headless=new")
         options.add_argument("--no-sandbox")
         driver = webdriver.Remote(

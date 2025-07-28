@@ -1,0 +1,22 @@
+FROM python:3.9-slim
+
+RUN apt-get update && \
+    apt-get install -y openjdk-11-jre-headless wget unzip && \
+    rm -rf /var/lib/apt/lists/*
+
+ENV ALLURE_VERSION=2.23.0
+RUN wget https://github.com/allure-framework/allure2/releases/download/${ALLURE_VERSION}/allure-${ALLURE_VERSION}.zip -O /tmp/allure.zip && \
+    unzip /tmp/allure.zip -d /opt && \
+    ln -s /opt/allure-${ALLURE_VERSION}/bin/allure /usr/local/bin/allure && \
+    rm /tmp/allure.zip
+
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+ENV SELENIUM_HOST=selenoid
+ENV SELENIUM_PORT=4444
+
+CMD ["pytest"]
