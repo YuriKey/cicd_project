@@ -17,3 +17,6 @@ ENV SELENIUM_HOST=http://selenoid:4444/wd/hub
 ENV ALLURE_RESULTS_DIR=/app/reports/allure-results
 
 CMD ["python", "-m", "pytest"]
+
+HEALTHCHECK --interval=5s --timeout=5s --retries=3 \
+  CMD curl -f http://selenoid:4444/status || exit 1

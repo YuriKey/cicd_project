@@ -1,5 +1,9 @@
 import os
 
+import logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 import allure
 import pytest
 from selenium import webdriver
@@ -9,9 +13,7 @@ from data.urls import Urls
 from pages.page_factory import PageFactory
 
 
-# Получаем URL Selenoid из переменной окружения
-# selenium_host = os.getenv("SELENIUM_HOST", "http://selenoid:4444/wd/hub")
-selenium_host = os.getenv("SELENIUM_HOST","http://selenoid:4444/wd/hub")
+selenium_host = os.getenv("SELENIUM_HOST", "http://selenoid:4444/wd/hub")
 
 
 @pytest.fixture
@@ -22,13 +24,19 @@ def pages(browser):
 
 @pytest.fixture(scope='function')
 def browser():
+    logger.info(f"Connecting to Selenoid at: {selenium_host}")
     with allure.step('Запуск браузера'):
         chrome_options = Options()
         chrome_options.add_argument('--start-maximized')
-        driver = webdriver.Remote(
-            command_executor=selenium_host,
-            options=chrome_options
-        )
+        try:
+            driver = webdriver.Remote(
+                command_executor=selenium_host,
+                options=chrome_options
+            )
+            logger.info("Browser session created successfully")
+        except Exception as e:
+            logger.error(f"Failed to create browser session: {str(e)}")
+            raise
         driver.implicitly_wait(10)
 
     yield driver
