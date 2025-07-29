@@ -23,7 +23,7 @@ def browser():
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
 
-        host = os.getenv("SELENIUM_HOST", "selenoid")
+        host = "host.docker.internal"
         port = os.getenv("SELENIUM_PORT", "4444")
         command_executor = f"http://{host}:{port}/wd/hub"
 

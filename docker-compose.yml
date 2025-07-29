@@ -9,7 +9,7 @@ services:
     depends_on:
       - selenoid
     environment:
-      - SELENIUM_HOST=selenoid
+      - SELENIUM_HOST=host.docker.internal
       - SELENIUM_PORT=4444
     networks:
       - selenoid_network
@@ -30,4 +30,4 @@ services:
 
 networks:
   selenoid_network:
-    driver: bridge
+    driver: overlay
