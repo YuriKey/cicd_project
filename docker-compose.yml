@@ -28,6 +28,6 @@ services:
     networks:
       - selenoid_network
 
-networks:
-  selenoid_network:
-    driver: overlay
+#networks:
+#  selenoid_network:
+#    driver: overlay
