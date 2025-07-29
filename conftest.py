@@ -23,24 +23,19 @@ def browser():
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
 
+        options.set_capability("browserVersion", "121.0")
+        options.set_capability("selenoid:options", {
+            "enableVNC": False,
+            "enableVideo": False,
+        })
+
         host = "selenoid"
         port = os.getenv("SELENIUM_PORT", "4444")
         command_executor = f"http://{host}:{port}/wd/hub"
 
-        capabilities = {
-            "browserName": "chrome",
-            "browserVersion": "121.0",
-            "selenoid:options": {
-                "enableVNC": False,
-                "enableVideo": False
-            },
-            **options.to_capabilities()
-        }
-
         driver = webdriver.Remote(
             command_executor=command_executor,
-            # options=options,
-            capabilities=capabilities  # type: ignore
+            options=options
         )
 
     yield driver
