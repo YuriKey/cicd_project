@@ -27,9 +27,20 @@ def browser():
         port = os.getenv("SELENIUM_PORT", "4444")
         command_executor = f"http://{host}:{port}/wd/hub"
 
+        capabilities = {
+            "browserName": "chrome",
+            "browserVersion": "121.0",
+            "selenoid:options": {
+                "enableVNC": False,
+                "enableVideo": False
+            },
+            **options.to_capabilities()
+        }
+
         driver = webdriver.Remote(
             command_executor=command_executor,
-            options=options
+            # options=options,
+            capabilities=capabilities  # type: ignore
         )
 
     yield driver
