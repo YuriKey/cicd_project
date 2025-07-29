@@ -32,7 +32,14 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - "4444:4444"
-    command: [ "-conf", "/etc/browsers.json", "-disable-docker=false", "-log-output-dir", "/opt/selenium/logs", "-disable-privileged=false" ]
+    command: [
+      "-conf", "/etc/browsers.json",
+      "-disable-docker=false",
+      "-log-output-dir", "/opt/selenium/logs",
+      "-disable-privileged=false",
+      "--container-name-template", "autotests-krenev-browser-{browser}-{version}",
+      "--docker-network", "test-network"
+    ]
     networks:
       - test-network
 
