@@ -21,6 +21,7 @@ def browser():
         options = Options()
         options.add_argument("--headless=new")
         options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
 
         host = os.getenv("SELENIUM_HOST", "selenoid")
         port = os.getenv("SELENIUM_PORT", "4444")
@@ -30,7 +31,6 @@ def browser():
             command_executor=command_executor,
             options=options
         )
-        driver.implicitly_wait(10)
 
     yield driver
     with allure.step('Закрытие браузера'):

@@ -12,7 +12,7 @@ services:
       - SELENIUM_HOST=selenoid
       - SELENIUM_PORT=4444
     networks:
-      - selenoid_net
+      - selenoid_network
 
   selenoid:
     container_name: selenoid
@@ -26,9 +26,8 @@ services:
     environment:
       - ENABLE_VNC=true
     networks:
-      - selenoid_net
+      - selenoid_network
 
 networks:
-  selenoid_net:
-    name: selenoid_network
+  selenoid_network:
     driver: bridge
