@@ -13,7 +13,4 @@ RUN pip install --upgrade pip
 
 COPY . .
 
-RUN python -m venv /venv
-ENV PATH="/venv/bin:$PATH"
-
 CMD ["tail", "-f", "/dev/null"]
