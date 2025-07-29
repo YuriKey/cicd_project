@@ -20,7 +20,7 @@ services:
       - /tmp/logs:/opt/selenium/logs
     ports:
       - "4444:4444"
-    command: ["-conf", "/etc/browsers.json", "-disable-docker", "-log-output", "/opt/selenium/logs/selenoid.log"]
+    command: ["-conf", "/etc/browsers.json", "-disable-docker", "-log-output-dir", "/opt/selenium/logs"]
     networks:
       - test-network
 
