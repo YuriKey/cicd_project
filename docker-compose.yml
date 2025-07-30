@@ -25,6 +25,8 @@ services:
     command: [
       "-conf", "/etc/browsers.json",
       "-disable-docker=false",
+      "-docker-uri", "unix:///var/run/docker.sock",
+      "-docker-api-version", "1.43",
       "-log-output-dir", "/opt/selenium/logs",
       "-disable-privileged=false"
     ]
