@@ -13,7 +13,8 @@ services:
       - test-network
 
   selenoid:
-    image: aerokube/selenoid:latest-release
+    image: aerokube/selenoid:1.10.8
+
     ports:
       - "4445:4444"
     volumes:
