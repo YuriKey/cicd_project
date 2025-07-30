@@ -34,7 +34,6 @@ services:
       -video-output-dir /opt/selenoid/video
       -container-network=test-network
       -disable-privileged=false
-      -selenium-port 4444
     networks:
       - test-network
 
