@@ -68,3 +68,22 @@ services:
 networks:
   test-network:
     external: true
+
+docker exec -it 853c87a3e85c10ad0638d024024eec3a05f59cc7f89558757c8c355eab59f548 cat /etc/selenoid/browsers.json
+docker exec -it 853c87a3e85c10ad0638d024024eec3a05f59cc7f89558757c8c355eab59f548 ls -l /var/run/docker.sock
+docker logs 853c87a3e85c10ad0638d024024eec3a05f59cc7f89558757c8c355eab59f548
+
+Шаги джобы в дженкинс:
+1. docker pull selenoid/vnc:chrome_128.0
+2. docker network inspect test-network || docker network create test-network
+3. docker-compose build
+4. docker-compose down && docker-compose up -d
+5. ping -n 21 127.0.0.1 >nul
+6. docker exec autotests-krenev-tests-1 pytest
+7. docker exec autotests-krenev-tests-1 allure generate ./reports/allure-results -o ./reports/allure-report --clean
+8. docker cp autotests-krenev-tests-1:/app/reports ./reports
+9. cd reports\allure-report
+powershell Compress-Archive -Path * -DestinationPath ..\allure-report.zip -Force
+cd ..
+
+
