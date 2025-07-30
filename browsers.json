@@ -4,7 +4,6 @@
     "versions": {
       "128.0": {
         "image": "selenoid/vnc:chrome_128.0",
-        "port": "4444",
         "path": "/",
         "env": ["SCREEN_WIDTH=1920", "SCREEN_HEIGHT=1080"]
       }
