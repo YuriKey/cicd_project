@@ -17,6 +17,7 @@ services:
 
   selenoid:
     image: aerokube/selenoid:latest
+    network_mode: host
     ports:
       - "4444:4444"
     environment:
@@ -33,8 +34,8 @@ services:
       -video-output-dir /opt/selenoid/video
       -container-network=autotests-krenev_test-network
       -disable-privileged=false
-    networks:
-      - test-network
+#    networks:
+#      - test-network
 
 networks:
   test-network:

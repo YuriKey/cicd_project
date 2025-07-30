@@ -32,7 +32,7 @@ def browser():
             "enableVideo": False,
         })
 
-        host = os.getenv("SELENOID_HOST", "selenoid")
+        host = os.getenv("SELENOID_HOST", "localhost")
         port = os.getenv("SELENIUM_PORT", "4444")
         command_executor = f"http://{host}:{port}/wd/hub"  #
 
