@@ -23,7 +23,7 @@ services:
     environment:
       - OVERRIDE_SELENIUM_PORT=4444
     volumes:
-      - ./selenoid_config:/etc/selenoid
+      - ./browsers.json:/etc/selenoid/browsers.json
       - /tmp/videos:/opt/selenoid/video
       - /tmp/logs:/opt/selenoid/logs
       - /var/run/docker.sock:/var/run/docker.sock
