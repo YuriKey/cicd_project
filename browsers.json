@@ -4,7 +4,6 @@
     "versions": {
       "114.0": {
         "image": "selenoid/chrome:114.0",
-        "port": "4444",
         "path": "/wd/hub"
       }
     }
