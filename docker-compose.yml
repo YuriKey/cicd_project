@@ -8,6 +8,7 @@ services:
     depends_on:
       - selenoid
     environment:
+      SELENOID_HOST: selenoid-1
       SELENIUM_PORT: 4444
     privileged: true
     networks:
