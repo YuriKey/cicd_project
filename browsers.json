@@ -5,8 +5,7 @@
       "128.0": {
         "image": "selenoid/vnc:chrome_114.0",
         "port": "4444",
-        "path": "/wd/hub",
-        "env": ["SCREEN_WIDTH=1920", "SCREEN_HEIGHT=1080"]
+        "path": "/wd/hub"
       }
     }
   }
