@@ -14,22 +14,21 @@ services:
 
   selenoid:
     image: aerokube/selenoid:1.11.0
-
     ports:
       - "4445:4444"
     volumes:
-      - ./browsers.json:/etc/browsers.json
-      - /tmp/videos:/opt/selenium/videos
-      - /tmp/logs:/opt/selenium/logs
+      - ./browsers.json:/etc/selenoid/browsers.json
+      - /tmp/videos:/opt/selenoid/video
+      - /tmp/logs:/opt/selenoid/logs
       - /var/run/docker.sock:/var/run/docker.sock
-    command: [
-      "-conf", "/etc/browsers.json",
-      "-disable-docker=false",
-      "-docker-uri", "unix:///var/run/docker.sock",
-      "-docker-api-version", "1.43",
-      "-log-output-dir", "/opt/selenium/logs",
-      "-disable-privileged=false"
-    ]
+    command: >
+      -conf /etc/selenoid/browsers.json
+      -log-output-dir /opt/selenoid/logs
+      -video-output-dir /opt/selenoid/video
+      -disable-docker=false
+      -docker-uri unix:///var/run/docker.sock
+      -docker-api-version 1.43
+      -disable-privileged=false
     networks:
       - test-network
 
