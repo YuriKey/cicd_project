@@ -9,7 +9,7 @@ services:
       - selenoid
     environment:
       SELENOID_HOST: selenoid
-      SELENIUM_PORT: 4444
+      SELENIUM_PORT: 4445
     privileged: true
     networks:
       - test-network
