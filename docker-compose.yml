@@ -15,7 +15,7 @@ services:
   selenoid:
     image: aerokube/selenoid:latest-release
     ports:
-      - "4444:4444"
+      - "4445:4444"
     volumes:
       - ./browsers.json:/etc/browsers.json
       - /tmp/videos:/opt/selenium/videos
