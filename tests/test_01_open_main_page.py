@@ -15,7 +15,7 @@ def test_main_page_open(pages):
     exp_text = main_page.EXPECTED_TEXTS
 
     with allure.step('1. Проверка текущего URL и заголовка страницы'):
-        assert main_page.get_current_url() == urls.MAIN_PAGE, 'Неверный URL главной страницы '
+        assert main_page.get_current_url() == urls.MAIN_PAGE, 'Неверный URL главной страницы'
         assert main_page.get_title() == exp_text['url_title'], 'Неверный заголовок страницы'
 
     with allure.step('2. Проверка наличия и текста кнопок в блоке навигации'):
