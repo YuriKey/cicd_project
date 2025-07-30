@@ -20,7 +20,7 @@ services:
       - /tmp/logs:/opt/selenium/logs
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
-      - "5555:4444"
+      - "4444:4444"
     command: [
       "-conf", "/etc/browsers.json",
       "-disable-docker=false",
