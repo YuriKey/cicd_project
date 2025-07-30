@@ -1,5 +1,4 @@
 #docker-compose.yml
-
 services:
   tests:
     build:
@@ -32,7 +31,7 @@ services:
       -conf /etc/selenoid/browsers.json
       -log-output-dir /opt/selenoid/logs
       -video-output-dir /opt/selenoid/video
-      -container-network=test-network
+      -container-network=autotests-krenev_test-network
       -disable-privileged=false
     networks:
       - test-network
