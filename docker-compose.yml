@@ -26,7 +26,6 @@ services:
       -log-output-dir /opt/selenoid/logs
       -video-output-dir /opt/selenoid/video
       -disable-docker=false
-      -docker-uri unix:///var/run/docker.sock
       -docker-api-version 1.43
       -disable-privileged=false
     networks:
