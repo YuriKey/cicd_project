@@ -9,6 +9,7 @@ services:
       - selenoid
     environment:
       SELENIUM_PORT: 4444
+    privileged: true
     networks:
       - test-network
 
@@ -21,6 +22,7 @@ services:
       - /tmp/videos:/opt/selenoid/video
       - /tmp/logs:/opt/selenoid/logs
       - /var/run/docker.sock:/var/run/docker.sock
+    privileged: true
     command: >
       -conf /etc/selenoid/browsers.json
       -log-output-dir /opt/selenoid/logs
