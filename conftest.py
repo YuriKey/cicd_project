@@ -24,7 +24,7 @@ def browser():
         options.add_argument("--disable-dev-shm-usage")
 
         options.set_capability("browserName", "chrome")
-        options.set_capability("browserVersion", "128.0")
+        options.set_capability("browserVersion", "114.0")
         options.set_capability("selenoid:options", {
             "enableVNC": False,
             "enableVideo": False,
