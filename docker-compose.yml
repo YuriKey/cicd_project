@@ -52,6 +52,7 @@ services:
     ports:
       - "4445:4444"
     volumes:
+      - container-network=autotests-krenev_test-network
       - ./browsers.json:/etc/selenoid/browsers.json
       - /tmp/videos:/opt/selenoid/video
       - /tmp/logs:/opt/selenoid/logs
@@ -65,15 +66,6 @@ services:
       - test-network
     depends_on:
       - chrome_128
-
-  chrome_128:
-    image: selenoid/vnc:chrome_128.0
-    environment:
-      - SCREEN_WIDTH=1920
-      - SCREEN_HEIGHT=1080
-    networks:
-      - test-network
-    shm_size: '2g'
 
 networks:
   test-network:
