@@ -14,13 +14,13 @@ services:
 
   selenoid:
     image: aerokube/selenoid:latest-release
+    ports:
+      - "4444:4444"
     volumes:
       - ./browsers.json:/etc/browsers.json
       - /tmp/videos:/opt/selenium/videos
       - /tmp/logs:/opt/selenium/logs
       - /var/run/docker.sock:/var/run/docker.sock
-    ports:
-      - "4444:4444"
     command: [
       "-conf", "/etc/browsers.json",
       "-disable-docker=false",
