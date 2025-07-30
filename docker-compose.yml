@@ -12,8 +12,9 @@ services:
       SELENOID_HOST: selenoid
       SELENIUM_PORT: 4444
     privileged: true
-    networks:
-      - test-network
+    network_mode: host
+#    networks:
+#      - test-network
 
   selenoid:
     image: aerokube/selenoid:latest
