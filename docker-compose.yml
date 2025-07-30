@@ -52,7 +52,6 @@ services:
     ports:
       - "4445:4444"
     volumes:
-      - container-network=autotests-krenev_test-network
       - ./browsers.json:/etc/selenoid/browsers.json
       - /tmp/videos:/opt/selenoid/video
       - /tmp/logs:/opt/selenoid/logs
@@ -61,11 +60,10 @@ services:
       -conf /etc/selenoid/browsers.json
       -log-output-dir /opt/selenoid/logs
       -video-output-dir /opt/selenoid/video
+      -container-network=test-network
       -disable-privileged=false
     networks:
       - test-network
-    depends_on:
-      - chrome_128
 
 networks:
   test-network:
