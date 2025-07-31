@@ -5,7 +5,10 @@
       "114.0": {
         "image": "selenoid/chrome:114.0",
         "port": "4444",
-        "path": "/"
+        "path": "/",
+        "volumes": ["/dev/shm:/dev/shm"],
+        "env": ["TZ=UTC"],
+        "hosts": ["test-network:selenoid"]
       }
     }
   }
