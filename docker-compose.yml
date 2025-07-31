@@ -19,7 +19,7 @@ services:
       - ./browsers.json:/etc/browsers.json
 #      - /tmp/videos:/opt/selenoid/videos
 #      - /tmp/logs:/opt/selenoid/logs
-#      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - "4444:4444"
     privileged: true
