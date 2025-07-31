@@ -33,7 +33,7 @@ def browser():
             "enableLog": True
         })
 
-        host = "selenoid"
+        host = "localhost"
         port = os.getenv("SELENIUM_PORT", "4444")
         command_executor = f"http://{host}:{port}/wd/hub"  #
 
