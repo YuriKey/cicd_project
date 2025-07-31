@@ -17,21 +17,21 @@ services:
     image: aerokube/selenoid:latest-release
     volumes:
       - ./browsers.json:/etc/browsers.json
-      - /tmp/videos:/opt/selenoid/videos
-      - /tmp/logs:/opt/selenoid/logs
-      - /var/run/docker.sock:/var/run/docker.sock
+#      - /tmp/videos:/opt/selenoid/videos
+#      - /tmp/logs:/opt/selenoid/logs
+#      - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - "4444:4444"
     privileged: true
     command: [
       "-conf", "/etc/browsers.json",
-      "-disable-docker=false",
-      "-log-output-dir", "/opt/selenoid/logs",
-      "-container-network", "test-network",
+      "-disable-docker=true",
+#      "-log-output-dir", "/opt/selenoid/logs",
       "-limit", "5",
       "-service-startup-timeout", "2m",
       "-session-attempt-timeout", "2m"
     ]
+
     networks:
       - test-network
 

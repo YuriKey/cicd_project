@@ -28,7 +28,7 @@ def browser():
         options.set_capability("browserName", "chrome")
         options.set_capability("browserVersion", "latest")
         options.set_capability("selenoid:options", {
-            "enableVNC": True,
+            "enableVNC": False,
             "enableVideo": False,
             "enableLog": True
         })

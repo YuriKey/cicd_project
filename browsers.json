@@ -6,9 +6,12 @@
         "image": "selenoid/chrome:latest",
         "port": "4444",
         "path": "/",
-        "volumes": ["/dev/shm:/dev/shm"],
-        "env": ["TZ=UTC"],
-        "shmSize": 2147483648
+        "cmd": [
+          "--no-sandbox",
+          "--disable-dev-shm-usage",
+          "--disable-gpu",
+          "--headless=new"
+          ]
       }
     }
   }
