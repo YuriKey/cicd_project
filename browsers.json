@@ -1,9 +1,9 @@
 {
   "chrome": {
-    "default": "126.0",
+    "default": "114.0",
     "versions": {
-      "126.0": {
-        "image": "selenoid/chrome:126.0",
+      "114.0": {
+        "image": "selenoid/chrome:114.0",
         "port": "4444",
         "path": "/",
         "cmd": [
