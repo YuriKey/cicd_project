@@ -3,7 +3,7 @@
     "default": "latest",
     "versions": {
       "latest": {
-        "image": "selenoid/chrome:latest",
+        "image": "aerokube/chrome:latest",
         "port": "4444",
         "path": "/",
         "cmd": [
