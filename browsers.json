@@ -6,7 +6,7 @@
         "image": "selenoid/chrome:128.0",
         "port": "4444",
         "path": "/",
-        "publish": true
+        "expose_port": false
       }
     }
   }
