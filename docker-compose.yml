@@ -25,7 +25,6 @@ services:
     privileged: true
     command: [
       "-conf", "/etc/browsers.json",
-      "-log-level", "debug",
       "-disable-docker=false",
       "-log-output-dir", "/opt/selenoid/logs",
       "-container-network", "test-network"
