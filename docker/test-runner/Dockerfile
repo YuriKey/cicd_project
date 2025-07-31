@@ -1,6 +1,6 @@
 FROM python:3.11-slim
 
-# Установка зависимостей с очисткой кэша в одном RUN
+# Установка зависимостей
 RUN apt-get update && \
     apt-get install -y \
         wget \
@@ -12,15 +12,17 @@ RUN apt-get update && \
     apt-get install -y google-chrome-stable && \
     rm -rf /var/lib/apt/lists/*
 
-# Копирование зависимостей
-COPY requirements.txt /tmp/requirements.txt
+# Создаем рабочую директорию
+WORKDIR /app
+
+# Сначала копируем только requirements.txt
+COPY ./requirements.txt .
 
 # Установка Python-зависимостей с кэшированием
 RUN --mount=type=cache,target=/root/.cache/pip \
-    pip install --no-cache-dir -r /tmp/requirements.txt
+    pip install --no-cache-dir -r requirements.txt
 
-# Копирование всего проекта
-WORKDIR /app
+# Копируем остальные файлы проекта
 COPY . .
 
 # Команда для запуска тестов
