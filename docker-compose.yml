@@ -27,7 +27,7 @@ services:
       "-conf", "/etc/browsers.json",
       "-disable-docker=false",
       "-log-output-dir", "/opt/selenoid/logs",
-      "-container-network", "AutoTests-Krenev_test-network"
+#      "-container-network", "AutoTests-Krenev_test-network"
     ]
     networks:
       - test-network
