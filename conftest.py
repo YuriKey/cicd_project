@@ -35,7 +35,7 @@ def browser():
 
         host = "selenoid"
         port = os.getenv("SELENIUM_PORT", "4444")
-        command_executor = f"http://{host}:{port}/wd/hub"  #/wd/hub
+        command_executor = f"http://{host}:{port}/wd/hub"  #
 
         driver = webdriver.Remote(
             command_executor=command_executor,

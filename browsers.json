@@ -4,11 +4,13 @@
     "versions": {
       "latest": {
         "image": "selenoid/chrome:latest",
-        "port": "4445",
+        "port": "4444",
         "path": "/",
         "volumes": ["/dev/shm:/dev/shm"],
         "env": ["TZ=UTC"],
-        "shmSize": 2147483648
+        "shmSize": 2147483648,
+        "port_mapped": false,
+        "expose_port": false
       }
     }
   }
