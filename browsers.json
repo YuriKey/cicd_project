@@ -4,12 +4,10 @@
     "versions": {
       "114.0": {
         "image": "selenoid/chrome:114.0",
-        "port": "4444",
+        "port": "4445",
         "path": "/",
         "volumes": ["/dev/shm:/dev/shm"],
-        "env": ["TZ=UTC"],
-        "port_mapped": false,
-        "expose_port": false
+        "env": ["TZ=UTC"]
       }
     }
   }
