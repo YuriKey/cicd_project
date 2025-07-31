@@ -5,7 +5,7 @@
 #
 # @allure.epic('Главная страница')
 # @allure.feature('Элементы страницы')
-# @allure.story('Проверка контактной информации в хедере')
+# @allure.story('Проверка контактной информации в хедере ')
 # @allure.severity(allure.severity_level.CRITICAL)
 # def test_header_contacts_check(open_main_page):
 #     main_page = open_main_page
