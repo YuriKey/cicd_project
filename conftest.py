@@ -20,27 +20,38 @@ def pages(browser):
 @pytest.fixture(scope='function')
 def browser():
     with allure.step('Запуск браузера'):
-        options = Options()
-        options.add_argument("--headless=new")
-        options.add_argument("--no-sandbox")
-        options.add_argument("--disable-dev-shm-usage")
-
-        options.set_capability("browserName", "chrome")
-        options.set_capability("browserVersion", "128.0")
-        options.set_capability("selenoid:options", {
-            "enableVNC": False,
-            "enableVideo": False,
-            "enableLog": True
-        })
-
-        host = "selenoid"
-        port = os.getenv("SELENOID_PORT", "4444")
-        command_executor = f"http://{host}:{port}/wd/hub"  #
+        # options = Options()
+        # options.add_argument("--headless=new")
+        # options.add_argument("--no-sandbox")
+        # options.add_argument("--disable-dev-shm-usage")
+        #
+        # options.set_capability("browserName", "chrome")
+        # options.set_capability("browserVersion", "128.0")
+        # options.set_capability("selenoid:options", {
+        #     "enableVNC": False,
+        #     "enableVideo": False,
+        #     "enableLog": True
+        # })
+        #
+        # host = "selenoid"
+        # port = os.getenv("SELENOID_PORT", "4444")
+        # command_executor = f"http://{host}:{port}/wd/hub"  #
+        #
+        # driver = webdriver.Remote(
+        #     command_executor=command_executor,
+        #     options=options
+        # )
+        capabilities = {
+            "browserName": "chrome",
+            "browserVersion": "128.0",
+            "selenoid:options": {
+                "enableVideo": False
+            }
+        }
 
         driver = webdriver.Remote(
-            command_executor=command_executor,
-            options=options
-        )
+            command_executor="http://localhost:4444/wd/hub",
+            desired_capabilities=capabilities)
         driver.implicitly_wait(10)
 
     yield driver
