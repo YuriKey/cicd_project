@@ -7,6 +7,8 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./reports:/app/reports
+    ports:
+      - "4444:4444"
     depends_on:
       - selenoid
     environment:
