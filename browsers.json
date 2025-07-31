@@ -8,9 +8,7 @@
         "path": "/",
         "volumes": ["/dev/shm:/dev/shm"],
         "env": ["TZ=UTC"],
-        "shmSize": 2147483648,
-        "port_mapped": false,
-        "expose_port": false
+        "shmSize": 2147483648
       }
     }
   }
