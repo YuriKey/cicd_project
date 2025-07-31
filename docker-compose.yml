@@ -30,8 +30,7 @@ services:
       "-container-network", "test-network",
       "-limit", "5",
       "-service-startup-timeout", "2m",
-      "-session-attempt-timeout", "2m",
-      "-disable-browser-port-binding=true"
+      "-session-attempt-timeout", "2m"
     ]
     networks:
       - test-network
