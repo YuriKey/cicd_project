@@ -14,7 +14,7 @@ services:
       - test-network
 
   selenoid:
-    image: selenoid:latest-release
+    image: aerokube/selenoid:latest-release
     volumes:
       - ./browsers.json:/etc/browsers.json
       - /var/run/docker.sock:/var/run/docker.sock
