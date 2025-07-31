@@ -7,8 +7,7 @@
         "port": "4444",
         "path": "/",
         "volumes": ["/dev/shm:/dev/shm"],
-        "env": ["TZ=UTC"],
-        "hosts": ["test-network:selenoid"]
+        "env": ["TZ=UTC"]
       }
     }
   }
