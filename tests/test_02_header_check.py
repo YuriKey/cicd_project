@@ -11,7 +11,7 @@
 #     main_page = open_main_page
 #     exp_text = main_page.EXPECTED_TEXTS
 #
-#     with allure.step('1. Проверка наличия номеров телефонов в хедере'):
+#     with allure.step('1. Проверка наличия номеров телефонов в хедер'):
 #         in_phone1 = main_page.find_element(loc.PHONE1_INDIAN)
 #         in_phone2 = main_page.find_element(loc.PHONE2_INDIAN)
 #         us_phone = main_page.find_element(loc.PHONE_US)
