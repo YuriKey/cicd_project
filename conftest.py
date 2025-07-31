@@ -13,7 +13,7 @@ from pages.page_factory import PageFactory
 
 @pytest.fixture
 def pages(browser):
-    with allure.step('Инициализация страницы'):
+    with allure.step('Инициализация страницы '):
         return PageFactory(browser)
 
 
