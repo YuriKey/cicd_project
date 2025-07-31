@@ -11,6 +11,8 @@ services:
       - selenoid
     environment:
       SELENIUM_PORT: 4444
+    links:
+      - selenoid
     networks:
       - test-network
 

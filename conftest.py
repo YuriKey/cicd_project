@@ -33,9 +33,7 @@ def browser():
             "enableLog": True
         })
 
-        host = "selenoid"
-        port = os.getenv("SELENOID_PORT", "4444")
-        command_executor = f"http://{host}:{port}/wd/hub"  #
+        command_executor = f"http://selenoid:4444/wd/hub"  #
 
         driver = webdriver.Remote(
             command_executor=command_executor,
