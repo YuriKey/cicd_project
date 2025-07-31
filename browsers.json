@@ -5,7 +5,8 @@
       "128.0": {
         "image": "selenoid/chrome:128.0",
         "port": "4444",
-        "path": "/"
+        "path": "/",
+        "port_mapped": false
       }
     }
   }
