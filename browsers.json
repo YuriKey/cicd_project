@@ -1,9 +1,9 @@
 {
   "chrome": {
-    "default": "114.0",
+    "default": "latest",
     "versions": {
-      "114.0": {
-        "image": "selenoid/chrome:114.0",
+      "latest": {
+        "image": "selenoid/chrome:latest",
         "port": "4444",
         "path": "/",
         "volumes": ["/dev/shm:/dev/shm"],
