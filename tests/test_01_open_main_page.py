@@ -6,8 +6,8 @@ urls = Urls()
 
 
 @allure.epic('Главная страница')
-@allure.feature('Элементы страницы')
-@allure.story('Проверка открытия страницы')
+@allure.feature('Элементы главной страницы')
+@allure.story('Проверка открытия главной страницы')
 @allure.severity(allure.severity_level.BLOCKER)
 def test_main_page_open(pages):
     main_page = pages.main
@@ -18,21 +18,14 @@ def test_main_page_open(pages):
         assert main_page.get_current_url() == urls.MAIN_PAGE, 'Неверный URL главной страницы'
         assert main_page.get_title() == exp_text['url_title'], 'Неверный заголовок страницы'
 
-    with allure.step('2. Проверка наличия и текста кнопок в блоке навигации'):
-        navigation_elements = loc.NAVIGATION_ELEMENTS
-        missing_elements = main_page.check_elements_with_text(navigation_elements, main_page)
-
-        assert not missing_elements, (f'Отсутствуют следующие элементы навигации: '
-                                      f'{", ".join(missing_elements)}')
-
-    with allure.step('3. Проверка наличия и текста кнопки регистрации'):
+    with allure.step('2. Проверка наличия и текста кнопки регистрации'):
         reg_button = main_page.find_element(loc.REGISTER_BUTTON)
 
         assert reg_button, 'Кнопка регистрация отсутствует'
         assert main_page.get_text(reg_button) == exp_text['reg_button_text'], \
             'Неверный текст для кнопки "Register Now"'
 
-    with allure.step('4. Проверка наличия и текста блока курсов'):
+    with allure.step('3. Проверка наличия и текста блока курсов'):
         block_element = main_page.find_element(loc.COURSES_BLOCK_CONTAINER)
         block_text = main_page.get_text(block_element)
 

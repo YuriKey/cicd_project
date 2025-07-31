@@ -1,54 +1,39 @@
-# conftest.py
-
-import os
-
 import allure
 import pytest
+
 from selenium import webdriver
+from selenium.webdriver import Remote
 from selenium.webdriver.chrome.options import Options
 
-from data.urls import Urls
 from pages.page_factory import PageFactory
 
 
 @pytest.fixture
 def pages(browser):
-    with allure.step('Инициализация страницы '):
+    with allure.step('Инициализация страницы'):
         return PageFactory(browser)
 
 
 @pytest.fixture(scope='function')
 def browser():
     with allure.step('Запуск браузера'):
-        options = Options()
-        options.add_argument("--headless=new")
-        options.add_argument("--no-sandbox")
-        options.add_argument("--disable-dev-shm-usage")
-
-        options.set_capability("browserName", "chrome")
-        options.set_capability("browserVersion", "128.0")
-        options.set_capability("selenoid:options", {
+        chrome_options = Options()
+        chrome_options.set_capability("selenoid:options", {
             "enableVNC": False,
-            "enableVideo": False,
-            "enableLog": True
+            "enableVideo": False
         })
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_argument('--disable-dev-shm-usage')
+        chrome_options.binary_location = '/usr/bin/google-chrome'
 
-        command_executor = f"http://selenoid:4444/wd/hub"  #
-
-        driver = webdriver.Remote(
-            command_executor=command_executor,
-            options=options
+        # driver = webdriver.Chrome(options=chrome_options)
+        driver = Remote(
+            command_executor='http://selenoid:4444/wd/hub',
+            options=chrome_options
         )
-
         driver.implicitly_wait(10)
 
     yield driver
     with allure.step('Закрытие браузера'):
         driver.quit()
-
-
-@pytest.fixture(scope='function')
-def open_main_page(pages):
-    with allure.step('Открытие главной страницы'):
-        pages.main.open(Urls.MAIN_PAGE)
-        return pages.main
