@@ -4,11 +4,10 @@
     "versions": {
       "114.0": {
         "image": "selenoid/chrome:114.0",
-        "port": "0",
-        "path": "/wd/hub",
+        "port": "4445",
+        "path": "/",
         "volumes": ["/dev/shm:/dev/shm"],
         "env": ["TZ=UTC"],
-        "limit": 5,
         "shmSize": 2147483648
       }
     }
