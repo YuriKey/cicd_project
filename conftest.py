@@ -26,7 +26,7 @@ def browser():
         options.add_argument("--disable-dev-shm-usage")
 
         options.set_capability("browserName", "chrome")
-        options.set_capability("browserVersion", "latest")
+        options.set_capability("browserVersion", "114.0")
         options.set_capability("selenoid:options", {
             "enableVNC": True,
             "enableVideo": False,
@@ -35,8 +35,7 @@ def browser():
 
         host = "selenoid"
         port = os.getenv("SELENIUM_PORT", "4444")
-        # command_executor = f"http://{host}:{port}/wd/hub"  #
-        command_executor = os.getenv('SELENOID_URL', 'http://localhost:4444/wd/hub')
+        command_executor = f"http://{host}:{port}/wd/hub"  #
 
         driver = webdriver.Remote(
             command_executor=command_executor,
