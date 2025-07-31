@@ -9,7 +9,7 @@ services:
     depends_on:
       - selenoid
     environment:
-      SELENIUM_PORT: 4444
+      SELENOID_PORT: 4444
     networks:
       - test-network
 
