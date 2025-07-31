@@ -23,7 +23,6 @@ services:
     command: [
       "-conf", "/etc/browsers.json",
       "-limit", "5",
-      "-auto-pull",
       "-service-startup-timeout", "2m",
       "-session-attempt-timeout", "2m"
     ]
