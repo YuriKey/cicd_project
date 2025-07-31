@@ -22,9 +22,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - "4444:4444"
-      - "4445:4445"
-      - "4446:4446"
-      - "4447:4447"
     privileged: true
     command: [
       "-conf", "/etc/browsers.json",
@@ -32,7 +29,8 @@ services:
       "-log-output-dir", "/opt/selenoid/logs",
       "-container-network", "test-network",
       "-limit", "5",
-      "-service-startup-timeout", "2m"
+      "-service-startup-timeout", "2m",
+      "-session-attempt-timeout", "2m"
     ]
     networks:
       - test-network

@@ -33,7 +33,7 @@ def browser():
             "enableLog": True
         })
 
-        host = "localhost"
+        host = "selenoid"
         port = os.getenv("SELENIUM_PORT", "4444")
         command_executor = f"http://{host}:{port}/wd/hub"  #
 
@@ -41,6 +41,7 @@ def browser():
             command_executor=command_executor,
             options=options
         )
+        driver.implicitly_wait(10)
 
     yield driver
     with allure.step('Закрытие браузера'):
