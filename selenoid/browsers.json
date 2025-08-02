@@ -1,21 +1,30 @@
 {
   "chrome": {
-    "default": "latest",
+    "default": "120.0",
     "versions": {
-      "latest": {
+      "120.0": {
         "image": "selenoid/chrome:120.0",
         "port": "4444",
-        "path": "/"
+        "path": "/",
+        "tmpfs": {
+                    "/tmp": "size=128m"
+                }
       }
     }
   },
   "firefox": {
-    "default": "latest",
+    "default": "120.0",
     "versions": {
-      "latest": {
+      "120.0": {
         "image": "selenoid/firefox:120.0",
         "port": "4444",
-        "path": "/wd/hub"
+        "path": "/wd/hub",
+        "env": [
+          "VERBOSE=true"
+        ],
+        "tmpfs": {
+                    "/tmp": "size=128m"
+                }
       }
     }
   }
